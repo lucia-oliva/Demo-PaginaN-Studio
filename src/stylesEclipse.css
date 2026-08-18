@@ -1,0 +1,662 @@
+.novaeclipse-theme {
+  /* Fonts */
+  --font-body: "Montserrat", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Fast Hand", var(--font-body);
+  --font-decorative: "Play Pretend", var(--font-body);
+
+  /* Base palette: NovaEclipse logo */
+  --color-black: #040210;
+  --color-black-soft: #120d22;
+  --color-panel-black: rgba(18, 13, 34, 0.78);
+  --color-panel-black-strong: rgba(24, 16, 44, 0.9);
+  --color-card-black: rgba(26, 17, 48, 0.92);
+  --color-toast-black: rgba(15, 10, 28, 0.96);
+  --color-toast-danger-black: rgba(45, 13, 31, 0.96);
+  --color-white: #fff4ff;
+  --color-white-soft: #ffffff;
+  --color-accent: #c77dff;
+  --color-accent-hover: #ff7a4f;
+  --color-accent-title: #ff6a4f;
+  --color-accent-shadow-dark: rgba(5, 3, 10, 0.92);
+  --color-danger-dark: rgba(121, 35, 76, 0.95);
+  --color-danger: #ff6a4f;
+  --color-danger-soft: rgba(255, 106, 79, 0.22);
+  --color-danger-border: rgba(255, 160, 95, 0.48);
+  --color-danger-text: #fff2ed;
+  --color-transparent: transparent;
+
+  /* White alpha palette */
+  --white-01: rgba(255, 244, 255, 0.01);
+  --white-015: rgba(255, 244, 255, 0.015);
+  --white-02: rgba(255, 244, 255, 0.02);
+  --white-03: rgba(255, 244, 255, 0.03);
+  --white-035: rgba(255, 244, 255, 0.035);
+  --white-04: rgba(255, 244, 255, 0.04);
+  --white-05: rgba(255, 244, 255, 0.05);
+  --white-06: rgba(255, 244, 255, 0.06);
+  --white-08: rgba(255, 244, 255, 0.08);
+  --white-10: rgba(255, 244, 255, 0.1);
+  --white-11: rgba(255, 244, 255, 0.11);
+  --white-12: rgba(255, 244, 255, 0.12);
+  --white-14: rgba(255, 244, 255, 0.14);
+  --white-16: rgba(255, 244, 255, 0.16);
+  --white-18: rgba(255, 244, 255, 0.18);
+  --white-34: rgba(255, 244, 255, 0.34);
+  --white-35: rgba(255, 244, 255, 0.35);
+  --white-38: rgba(255, 244, 255, 0.38);
+  --white-40: rgba(255, 244, 255, 0.4);
+  --white-42: rgba(255, 244, 255, 0.42);
+  --white-55: rgba(255, 244, 255, 0.55);
+  --white-72: rgba(255, 244, 255, 0.72);
+  --white-88: rgba(255, 244, 255, 0.88);
+
+  /* Accent alpha palette */
+  --accent-035: rgba(199, 125, 255, 0.035);
+  --accent-04: rgba(199, 125, 255, 0.04);
+  --accent-08: rgba(199, 125, 255, 0.08);
+  --accent-10: rgba(199, 125, 255, 0.1);
+  --accent-12: rgba(199, 125, 255, 0.12);
+  --accent-14: rgba(199, 125, 255, 0.14);
+  --accent-16: rgba(199, 125, 255, 0.16);
+  --accent-18: rgba(199, 125, 255, 0.18);
+  --accent-20: rgba(255, 106, 79, 0.26);
+  --accent-25: rgba(199, 125, 255, 0.25);
+  --accent-28: rgba(255, 106, 79, 0.32);
+  --accent-30: rgba(199, 125, 255, 0.3);
+  --accent-32: rgba(255, 106, 79, 0.36);
+  --accent-35: rgba(199, 125, 255, 0.35);
+  --accent-38: rgba(255, 106, 79, 0.44);
+  --accent-40: rgba(199, 125, 255, 0.4);
+  --accent-42: rgba(255, 160, 95, 0.42);
+  --accent-44: rgba(199, 125, 255, 0.44);
+  --accent-48: rgba(255, 106, 79, 0.56);
+  --accent-72: rgba(255, 160, 95, 0.72);
+  --accent-95: rgba(255, 106, 79, 0.95);
+
+  /* Theme aliases */
+  --bg: #040210;
+  --surface: rgba(26, 17, 48, 0.72);
+  --surface-strong: rgba(36, 22, 66, 0.86);
+  --surface-soft: rgba(255, 244, 255, 0.08);
+  --surface-raised: rgba(26, 17, 48, 0.92);
+  --border: rgba(255, 244, 255, 0.2);
+  --border-soft: rgba(255, 244, 255, 0.12);
+  --text: #fff4ff;
+  --text-soft: rgba(255, 244, 255, 0.88);
+  --text-faint: rgba(255, 244, 255, 0.68);
+  --accent: #c77dff;
+  --accent-soft: rgba(199, 125, 255, 0.12);
+  --shadow: 0 18px 40px rgba(3, 2, 8, 0.32);
+  --shadow-accent: 0 0 18px rgba(255, 106, 79, 0.34);
+}
+
+.novaeclipse-theme .app-shell__glow {
+  background: var(--bg);
+  
+}
+
+.novaeclipse-theme .novaeclipse-page {
+  min-height: calc(100vh - 3rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem 0;
+}
+
+.novaeclipse-theme .novaeclipse-page__eyebrow {
+  margin: 0;
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.novaeclipse-theme .novaeclipse-page__title {
+  margin: 0;
+  font-size: clamp(3rem, 10vw, 7rem);
+  line-height: 0.9;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.novaeclipse-theme .novaeclipse-page__copy {
+  max-width: 42rem;
+  margin: 0;
+  color: var(--text-soft);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.5;
+}
+
+.novaeclipse-theme .novaeclipse-page__link {
+  width: fit-content;
+  border: 1px solid var(--accent-35);
+  border-radius: 0.95rem;
+  padding: 0.85rem 1rem;
+  color: var(--text);
+  background: var(--accent-12);
+  box-shadow: var(--shadow-accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.novaeclipse-theme .hero-header__nav-logo img,
+.novaeclipse-theme .hero-header__logo-image,
+.novaeclipse-theme .hero-header__showcase img {
+  mix-blend-mode: screen;
+    width: min(100%, 31rem) !important ;
+
+}
+
+.novaeclipse-theme .hero-header__title-main-svg {
+  width: min(100%, 46rem);
+  height: auto;
+  color: #ff7a5f;
+  overflow: visible;
+  
+}
+
+.novaeclipse-theme .hero-header,
+.novaeclipse-theme .hero-header__content {
+  background: var(--color-transparent);
+  box-shadow: none;
+}
+
+.novaeclipse-theme .login-card,
+.novaeclipse-theme .custom-select,
+.novaeclipse-theme .number-field,
+.novaeclipse-theme .section-card,
+.novaeclipse-theme .section-card--accent,
+.novaeclipse-theme .table-shell,
+.novaeclipse-theme .history-card,
+.novaeclipse-theme .history-item,
+.novaeclipse-theme .toast,
+.novaeclipse-theme .toast--penalty,
+.novaeclipse-theme .tournament-footer__rules-card {
+  background: var(--surface-raised);
+  box-shadow: var(--shadow);
+}
+
+.novaeclipse-theme .section-card--accent,
+.novaeclipse-theme .day-chip--active,
+.novaeclipse-theme .top-badge--danger,
+.novaeclipse-theme .rank-chip--top,
+.novaeclipse-theme .toast__icon--penalty {
+  border-color: var(--color-danger-border);
+  background: var(--color-danger-soft);
+}
+
+.novaeclipse-theme .action-button--neutral,
+.novaeclipse-theme .action-button--ghost {
+  background: var(--surface-soft);
+  box-shadow: none;
+}
+
+.novaeclipse-theme .action-button--danger {
+  background: var(--color-danger);
+  box-shadow: var(--shadow-accent);
+}
+
+.novaeclipse-theme .field-label,
+.novaeclipse-theme .section-card__eyebrow,
+.novaeclipse-theme .panel-card__title,
+.novaeclipse-theme .ranking-table th,
+.novaeclipse-theme .history-card__slot,
+.novaeclipse-theme .history-card__day {
+  color: var(--text-soft);
+}
+
+.novaeclipse-theme .custom-select,
+.novaeclipse-theme .number-field,
+.novaeclipse-theme .day-chip,
+.novaeclipse-theme .ranking-table,
+.novaeclipse-theme .history-item,
+.novaeclipse-theme .top-badge {
+  color: var(--text);
+}
+
+.novaeclipse-theme .custom-select:focus,
+.novaeclipse-theme .number-field:focus,
+.novaeclipse-theme .day-chip--active {
+  border-color: var(--color-danger-border);
+  box-shadow: 0 0 0 1px var(--color-danger-border), var(--shadow-accent);
+}
+
+.novaeclipse-theme .hero-header__nav-links a:hover,
+.novaeclipse-theme .novaeclipse-page__eyebrow,
+.novaeclipse-theme .section-card__icon--accent,
+.novaeclipse-theme .panel-card__icon,
+.novaeclipse-theme .select-icon,
+.novaeclipse-theme .tournament-footer__eyebrow,
+.novaeclipse-theme .tournament-footer__formula-title,
+.novaeclipse-theme .tournament-footer__formula strong {
+  color: var(--color-accent-title);
+}
+
+.novaeclipse-theme .tournament-footer {
+  background: var(--bg);
+}
+
+.novaeclipse-theme .tournament-footer__card-glow {
+  background: var(--accent-soft);
+}
+
+.novaeclipse-theme .tournament-footer__line,
+.novaeclipse-theme .hero-header__accent-line,
+.novaeclipse-theme .tournament-footer__brand-line {
+  background: var(--color-accent-title);
+  box-shadow: var(--shadow-accent);
+}
+
+.novaeclipse-theme .hero-header__title-main-svg text {
+  font-family: var(--font-display);
+  font-size: 11rem;
+  text-transform: uppercase;
+}
+
+.novaeclipse-theme .section-card,
+.novaeclipse-theme .login-card,
+.novaeclipse-theme .table-shell,
+.novaeclipse-theme .history-card,
+.novaeclipse-theme .tournament-footer__rules-card {
+  backdrop-filter: none;
+}
+
+.novaeclipse-theme .custom-select option {
+  color: var(--text);
+  background: var(--bg);
+}
+
+.novaeclipse-theme .table-scroll:has(.ranking-table--with-kills) {
+  overflow-x: hidden;
+}
+
+.novaeclipse-theme .ranking-table--with-kills {
+  width: 100%;
+  min-width: 0;
+  table-layout: fixed;
+}
+
+.novaeclipse-theme .ranking-table--with-kills th,
+.novaeclipse-theme .ranking-table--with-kills td {
+  padding-inline: clamp(0.3rem, 1vw, 1rem);
+  overflow-wrap: anywhere;
+}
+
+.novaeclipse-theme .ranking-table--with-kills th:nth-child(1),
+.novaeclipse-theme .ranking-table--with-kills td:nth-child(1) {
+  width: 8%;
+}
+
+.novaeclipse-theme .ranking-table--with-kills th:nth-child(2),
+.novaeclipse-theme .ranking-table--with-kills td:nth-child(2) {
+  width: 32%;
+}
+
+.novaeclipse-theme .ranking-table--with-kills th:nth-child(3),
+.novaeclipse-theme .ranking-table--with-kills td:nth-child(3) {
+  width: 14%;
+  text-align: center;
+}
+
+.novaeclipse-theme .ranking-table--with-kills th:nth-child(4),
+.novaeclipse-theme .ranking-table--with-kills td:nth-child(4) {
+  width: 16%;
+  text-align: center;
+}
+
+.novaeclipse-theme .ranking-table--with-kills th:nth-child(5),
+.novaeclipse-theme .ranking-table--with-kills td:nth-child(5) {
+  width: 14%;
+  text-align: center;
+}
+
+.novaeclipse-theme .ranking-table--with-kills th:nth-child(6),
+.novaeclipse-theme .ranking-table--with-kills td:nth-child(6) {
+  width: 16%;
+  text-align: center;
+}
+
+@media (min-width: 425px) and (max-width: 768px) {
+
+  .novaeclipse-theme .hero-header__nav-logo img,
+.novaeclipse-theme .hero-header__logo-image,
+.novaeclipse-theme .hero-header__showcase img {
+  mix-blend-mode: screen;
+    width: min(100%, 24rem) !important ;
+
+}
+ 
+}
+
+@media (max-width: 425px) {
+
+  
+.novaeclipse-theme .hero-header__nav-logo img,
+.novaeclipse-theme .hero-header__logo-image,
+.novaeclipse-theme .hero-header__showcase img {
+  mix-blend-mode: screen;
+    width: min(100%, 18rem) !important ;
+
+}
+
+  .novaeclipse-theme .app-container {
+    padding: 0.65rem 0.42rem 0.9rem;
+  }
+
+  .novaeclipse-theme .main-grid {
+    gap: 0.65rem;
+  }
+
+  .novaeclipse-theme .panel-card {
+    padding: 0.45rem 0.25rem;
+    border-radius: 0;
+  }
+
+  .novaeclipse-theme .panel-controls {
+    gap: 0.68rem;
+  }
+
+  .novaeclipse-theme .field-label {
+    margin-bottom: 0.28rem;
+    font-size: 8px;
+    letter-spacing: 0.1em;
+  }
+
+  .novaeclipse-theme .custom-select,
+  .novaeclipse-theme .number-field {
+    min-height: 2.45rem;
+    padding: 0.58rem 0.68rem;
+    border-radius: 0.7rem;
+    font-size: 0.8rem;
+  }
+
+  .novaeclipse-theme .custom-select {
+    padding-right: 1.9rem;
+  }
+
+  .novaeclipse-theme .select-icon {
+    right: 0.58rem;
+  }
+
+  .novaeclipse-theme .select-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .novaeclipse-theme .slot-name-editor {
+    gap: 0.35rem;
+    margin-top: 0.58rem;
+  }
+
+  .novaeclipse-theme .slot-name-editor__row {
+    grid-template-columns: minmax(0, 1fr) 2.45rem;
+    gap: 0.38rem;
+  }
+
+  .novaeclipse-theme .slot-name-editor__button {
+    min-width: 2.45rem;
+    min-height: 2.45rem;
+    border-radius: 0.7rem;
+  }
+
+  .novaeclipse-theme .day-grid {
+    gap: 0.25rem;
+  }
+
+  .novaeclipse-theme .day-chip {
+    min-height: 2.25rem;
+    padding: 0.46rem 0.1rem;
+    border-radius: 0.62rem;
+    font-size: 0.67rem;
+  }
+
+  .novaeclipse-theme .section-card {
+    padding: 0.65rem;
+    border-radius: 0.85rem;
+  }
+
+  .novaeclipse-theme .section-card__header {
+    gap: 0.45rem;
+    margin-bottom: 0.62rem;
+  }
+
+  .novaeclipse-theme .section-card__icon,
+  .novaeclipse-theme .panel-card__icon {
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 0.65rem;
+  }
+
+  .novaeclipse-theme .section-card__icon svg,
+  .novaeclipse-theme .panel-card__icon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .novaeclipse-theme .section-card__eyebrow {
+    font-size: 8px;
+    letter-spacing: 0.12em;
+  }
+
+  .novaeclipse-theme .section-card__title {
+    margin-top: 0.12rem;
+    font-size: 0.86rem;
+  }
+
+  .novaeclipse-theme .form-grid {
+    gap: 0.52rem;
+  }
+
+  .novaeclipse-theme .action-button {
+    min-height: 2.45rem;
+    margin-top: 0.58rem;
+    padding: 0.6rem 0.58rem;
+    border-radius: 0.68rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.05em;
+    gap: 0.32rem;
+  }
+
+  .novaeclipse-theme .action-button svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .novaeclipse-theme .history-card {
+    margin-top: 0.65rem;
+    padding: 0.5rem;
+    border-radius: 0.82rem;
+  }
+
+  .novaeclipse-theme .history-card__top {
+    margin-bottom: 0.55rem;
+  }
+
+  .novaeclipse-theme .history-card__slot,
+  .novaeclipse-theme .history-card__day {
+    font-size: 0.56rem;
+    letter-spacing: 0.07em;
+  }
+
+  .novaeclipse-theme .history-card__list {
+    gap: 0.42rem;
+  }
+
+  .novaeclipse-theme .history-card__empty {
+    padding: 1rem 0.7rem;
+    border-radius: 0.7rem;
+    font-size: 0.78rem;
+  }
+
+  .novaeclipse-theme .history-item:not(.history-item--editing) {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "badges actions"
+      "points actions";
+    column-gap: 0.42rem;
+    row-gap: 0.32rem;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 0.72rem;
+  }
+
+  .novaeclipse-theme .history-item:not(.history-item--editing) .history-item__badges {
+    grid-area: badges;
+    gap: 0.22rem;
+  }
+
+  .novaeclipse-theme .history-item:not(.history-item--editing) .history-item__footer {
+    display: contents;
+  }
+
+  .novaeclipse-theme .history-item:not(.history-item--editing) .history-item__points {
+    grid-area: points;
+    font-size: 0.78rem;
+    line-height: 1.1;
+  }
+
+  .novaeclipse-theme .history-item:not(.history-item--editing) .history-item__actions {
+    grid-area: actions;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.28rem;
+    justify-content: stretch;
+    align-self: stretch;
+    min-width: 4.9rem;
+  }
+
+  .novaeclipse-theme .history-item .action-button--small {
+    width: 100%;
+    min-height: 1.85rem;
+    margin-top: 0;
+    padding: 0.38rem 0.44rem;
+    border-radius: 0.55rem;
+    font-size: 0.53rem;
+    letter-spacing: 0.035em;
+    gap: 0.22rem;
+  }
+
+  .novaeclipse-theme .history-item .action-button--small svg {
+    width: 11px;
+    height: 11px;
+  }
+
+  .novaeclipse-theme .history-item .top-badge {
+    min-height: 1.25rem;
+    padding: 0.18rem 0.32rem;
+    border-radius: 0.45rem;
+    font-size: 0.48rem;
+    letter-spacing: 0.04em;
+  }
+
+  .novaeclipse-theme .history-item--editing {
+    padding: 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .novaeclipse-theme .history-item--editing .history-item__actions {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.28rem;
+  }
+
+  .novaeclipse-theme .panel-card__header {
+    gap: 0.55rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .novaeclipse-theme .panel-card__title-wrap {
+    gap: 0.42rem;
+  }
+
+  .novaeclipse-theme .panel-card__title {
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+  }
+
+  .novaeclipse-theme .table-shell {
+    border-radius: 0.75rem;
+  }
+
+  .novaeclipse-theme .table-scroll {
+    overflow-x: hidden;
+  }
+
+  .novaeclipse-theme .ranking-table {
+    width: 100%;
+    min-width: 0;
+    table-layout: fixed;
+    font-size: 0.68rem;
+  }
+
+  .novaeclipse-theme .ranking-table th,
+  .novaeclipse-theme .ranking-table td {
+    padding: 0.48rem 0.24rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .novaeclipse-theme .ranking-table th {
+    font-size: 7px;
+    letter-spacing: 0.045em;
+  }
+
+  .novaeclipse-theme .ranking-table th:nth-child(1),
+  .novaeclipse-theme .ranking-table td:nth-child(1) {
+    width: 12%;
+  }
+
+  .novaeclipse-theme .ranking-table th:nth-child(2),
+  .novaeclipse-theme .ranking-table td:nth-child(2) {
+    width: 36%;
+  }
+
+  .novaeclipse-theme .ranking-table th:nth-child(3),
+  .novaeclipse-theme .ranking-table td:nth-child(3),
+  .novaeclipse-theme .ranking-table th:nth-child(4),
+  .novaeclipse-theme .ranking-table td:nth-child(4),
+  .novaeclipse-theme .ranking-table th:nth-child(5),
+  .novaeclipse-theme .ranking-table td:nth-child(5) {
+    width: 17.33%;
+    text-align: center;
+  }
+
+  .novaeclipse-theme .ranking-table--with-kills th:nth-child(1),
+  .novaeclipse-theme .ranking-table--with-kills td:nth-child(1) {
+    width: 10%;
+  }
+
+  .novaeclipse-theme .ranking-table--with-kills th:nth-child(2),
+  .novaeclipse-theme .ranking-table--with-kills td:nth-child(2) {
+    width: 30%;
+  }
+
+  .novaeclipse-theme .ranking-table--with-kills th:nth-child(3),
+  .novaeclipse-theme .ranking-table--with-kills td:nth-child(3) {
+    width: 14%;
+  }
+
+  .novaeclipse-theme .ranking-table--with-kills th:nth-child(4),
+  .novaeclipse-theme .ranking-table--with-kills td:nth-child(4),
+  .novaeclipse-theme .ranking-table--with-kills th:nth-child(6),
+  .novaeclipse-theme .ranking-table--with-kills td:nth-child(6) {
+    width: 16%;
+  }
+
+  .novaeclipse-theme .ranking-table--with-kills th:nth-child(5),
+  .novaeclipse-theme .ranking-table--with-kills td:nth-child(5) {
+    width: 14%;
+  }
+
+  .novaeclipse-theme .rank-chip {
+    width: 1.45rem;
+    height: 1.45rem;
+    border-radius: 0.52rem;
+    font-size: 0.66rem;
+  }
+}

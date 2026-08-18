@@ -1,0 +1,636 @@
+.novarush-theme {
+  /* Fonts */
+  --font-body: "Montserrat", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Fast Hand", var(--font-body);
+  --font-decorative: "Play Pretend", var(--font-body);
+
+  /* Base palette: NovaRush logo */
+  --color-black: #040210;
+  --color-black-soft: #120d22;
+  --color-panel-black: rgba(18, 13, 34, 0.78);
+  --color-panel-black-strong: rgba(24, 16, 44, 0.9);
+  --color-card-black: rgba(26, 17, 48, 0.92);
+  --color-toast-black: rgba(15, 10, 28, 0.96);
+  --color-toast-danger-black: rgba(45, 13, 31, 0.96);
+  --color-white: #fff4ff;
+  --color-white-soft: #ffffff;
+  --color-accent: #d81b60;
+  --color-accent-hover: #ff2d8d;
+  --color-accent-title: #e91e63;
+  --color-accent-shadow-dark: rgba(5, 3, 10, 0.92);
+  --color-danger-dark: rgba(121, 35, 76, 0.95);
+  --color-danger: #e71158da;
+  --color-danger-soft: rgba(233, 13, 86, 0.473);
+  --color-danger-border: rgba(245, 15, 107, 0.733);
+  --color-danger-text: #fff0f7;
+  --color-transparent: transparent;
+
+  /* White alpha palette */
+  --white-01: rgba(255, 244, 255, 0.01);
+  --white-015: rgba(255, 244, 255, 0.015);
+  --white-02: rgba(255, 244, 255, 0.02);
+  --white-03: rgba(255, 244, 255, 0.03);
+  --white-035: rgba(255, 244, 255, 0.035);
+  --white-04: rgba(255, 244, 255, 0.04);
+  --white-05: rgba(255, 244, 255, 0.05);
+  --white-06: rgba(255, 244, 255, 0.06);
+  --white-08: rgba(255, 244, 255, 0.08);
+  --white-10: rgba(255, 244, 255, 0.1);
+  --white-11: rgba(255, 244, 255, 0.11);
+  --white-12: rgba(255, 244, 255, 0.12);
+  --white-14: rgba(255, 244, 255, 0.14);
+  --white-16: rgba(255, 244, 255, 0.16);
+  --white-18: rgba(255, 244, 255, 0.18);
+  --white-34: rgba(255, 244, 255, 0.34);
+  --white-35: rgba(255, 244, 255, 0.35);
+  --white-38: rgba(255, 244, 255, 0.38);
+  --white-40: rgba(255, 244, 255, 0.4);
+  --white-42: rgba(255, 244, 255, 0.42);
+  --white-55: rgba(255, 244, 255, 0.55);
+  --white-72: rgba(255, 244, 255, 0.72);
+  --white-88: rgba(255, 244, 255, 0.88);
+
+  /* Accent alpha palette */
+  --accent-035: rgba(216, 27, 96, 0.035);
+  --accent-04: rgba(216, 27, 96, 0.04);
+  --accent-08: rgba(216, 27, 96, 0.08);
+  --accent-10: rgba(216, 27, 96, 0.1);
+  --accent-12: rgba(216, 27, 96, 0.12);
+  --accent-14: rgba(216, 27, 96, 0.14);
+  --accent-16: rgba(216, 27, 96, 0.16);
+  --accent-18: rgba(216, 27, 96, 0.18);
+  --accent-20: rgba(233, 30, 99, 0.26);
+  --accent-25: rgba(216, 27, 96, 0.25);
+  --accent-28: rgba(233, 30, 99, 0.32);
+  --accent-30: rgba(216, 27, 96, 0.3);
+  --accent-32: rgba(233, 30, 99, 0.36);
+  --accent-35: rgba(216, 27, 96, 0.35);
+  --accent-38: rgba(233, 30, 99, 0.44);
+  --accent-40: rgba(216, 27, 96, 0.4);
+  --accent-42: rgba(255, 77, 148, 0.42);
+  --accent-44: rgba(216, 27, 96, 0.44);
+  --accent-48: rgba(233, 30, 99, 0.56);
+  --accent-72: rgba(255, 77, 148, 0.72);
+  --accent-95: rgba(233, 30, 99, 0.95);
+
+  /* Theme aliases */
+  --bg: #040210;
+  --surface: rgba(26, 17, 48, 0.72);
+  --surface-strong: rgba(36, 22, 66, 0.86);
+  --surface-soft: rgba(255, 244, 255, 0.08);
+  --surface-raised: rgba(95, 7, 48, 0.349);
+  --border: rgba(255, 244, 255, 0.2);
+  --border-soft: rgba(255, 244, 255, 0.12);
+  --text: #fff4ff;
+  --text-soft: rgba(255, 244, 255, 0.88);
+  --text-faint: rgba(255, 244, 255, 0.68);
+  --accent: #d81b60;
+  --accent-soft: rgba(216, 27, 96, 0.12);
+  --shadow: 0 18px 40px rgba(3, 2, 8, 0.32);
+  --shadow-accent: 0 0 18px rgba(233, 30, 99, 0.34);
+}
+
+/* Ranking de seis columnas: bajas y puntos por bajas separados. */
+.novarush-theme .table-scroll:has(.ranking-table--with-kills) {
+  overflow-x: hidden;
+}
+
+.novarush-theme .ranking-table--with-kills {
+  width: 100%;
+  min-width: 0;
+  table-layout: fixed;
+}
+
+.novarush-theme .ranking-table--with-kills th,
+.novarush-theme .ranking-table--with-kills td {
+  padding-inline: clamp(0.3rem, 1vw, 1rem);
+  overflow-wrap: anywhere;
+}
+
+.novarush-theme .ranking-table--with-kills th:nth-child(1),
+.novarush-theme .ranking-table--with-kills td:nth-child(1) { width: 8%; }
+.novarush-theme .ranking-table--with-kills th:nth-child(2),
+.novarush-theme .ranking-table--with-kills td:nth-child(2) { width: 32%; }
+.novarush-theme .ranking-table--with-kills th:nth-child(3),
+.novarush-theme .ranking-table--with-kills td:nth-child(3) { width: 14%; text-align: center; }
+.novarush-theme .ranking-table--with-kills th:nth-child(4),
+.novarush-theme .ranking-table--with-kills td:nth-child(4) { width: 16%; text-align: center; }
+.novarush-theme .ranking-table--with-kills th:nth-child(5),
+.novarush-theme .ranking-table--with-kills td:nth-child(5) { width: 14%; text-align: center; }
+.novarush-theme .ranking-table--with-kills th:nth-child(6),
+.novarush-theme .ranking-table--with-kills td:nth-child(6) { width: 16%; text-align: center; }
+
+@media (max-width: 425px) {
+  .novarush-theme .ranking-table--with-kills th:nth-child(1),
+  .novarush-theme .ranking-table--with-kills td:nth-child(1) { width: 10%; }
+  .novarush-theme .ranking-table--with-kills th:nth-child(2),
+  .novarush-theme .ranking-table--with-kills td:nth-child(2) { width: 30%; }
+}
+
+.novarush-theme .app-shell__glow {
+  background: var(--bg);
+}
+
+.novarush-theme .novarush-page {
+  min-height: calc(100vh - 3rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem 0;
+}
+
+.novarush-theme .novarush-page__eyebrow {
+  margin: 0;
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.novarush-theme .novarush-page__title {
+  margin: 0;
+  font-size: clamp(3rem, 10vw, 7rem);
+  line-height: 0.9;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.novarush-theme .novarush-page__copy {
+  max-width: 42rem;
+  margin: 0;
+  color: var(--text-soft);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.5;
+}
+
+.novarush-theme .novarush-page__link {
+  width: fit-content;
+  border: 1px solid var(--accent-35);
+  border-radius: 0.95rem;
+  padding: 0.85rem 1rem;
+  color: var(--text);
+  background: var(--accent-12);
+  box-shadow: var(--shadow-accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.novarush-theme .hero-header__nav-logo img,
+.novarush-theme .hero-header__logo-image,
+.novarush-theme .hero-header__showcase img {
+  mix-blend-mode: screen;
+    width: min(100%, 28rem) !important ;
+
+}
+
+.novarush-theme .hero-header__title-main-svg {
+  width: min(100%, 46rem);
+  height: auto;
+  color: #f10372e8;
+  overflow: visible;
+  
+}
+
+.novarush-theme .hero-header,
+.novarush-theme .hero-header__content {
+  background: var(--color-transparent);
+  box-shadow: none;
+}
+
+.novarush-theme .login-card,
+.novarush-theme .custom-select,
+.novarush-theme .number-field,
+.novarush-theme .section-card,
+.novarush-theme .section-card--accent,
+.novarush-theme .table-shell,
+.novarush-theme .history-card,
+.novarush-theme .history-item,
+.novarush-theme .toast,
+.novarush-theme .toast--penalty,
+.novarush-theme .tournament-footer__rules-card {
+  background: var(--surface-raised);
+  box-shadow: var(--shadow);
+}
+
+.novarush-theme .section-card--accent,
+.novarush-theme .day-chip--active,
+.novarush-theme .top-badge--danger,
+.novarush-theme .rank-chip--top,
+.novarush-theme .toast__icon--penalty {
+  border-color: var(--color-danger-border);
+  background: var(--color-danger-soft);
+}
+
+.novarush-theme .action-button--neutral,
+.novarush-theme .action-button--ghost {
+  background: var(--surface-soft);
+  box-shadow: none;
+}
+
+.novarush-theme .action-button--danger {
+  background: var(--color-danger);
+  box-shadow: var(--shadow-accent);
+}
+
+.novarush-theme .field-label,
+.novarush-theme .section-card__eyebrow,
+.novarush-theme .panel-card__title,
+.novarush-theme .ranking-table th,
+.novarush-theme .history-card__slot,
+.novarush-theme .history-card__day {
+  color: var(--text-soft);
+}
+
+.novarush-theme .custom-select,
+.novarush-theme .number-field,
+.novarush-theme .day-chip,
+.novarush-theme .ranking-table,
+.novarush-theme .history-item,
+.novarush-theme .top-badge {
+  color: var(--text);
+}
+
+.novarush-theme .custom-select:focus,
+.novarush-theme .number-field:focus,
+.novarush-theme .day-chip--active {
+  border-color: var(--color-danger-border);
+  box-shadow: 0 0 0 1px var(--color-danger-border), var(--shadow-accent);
+}
+
+.novarush-theme .hero-header__nav-links a:hover,
+.novarush-theme .novarush-page__eyebrow,
+.novarush-theme .section-card__icon--accent,
+.novarush-theme .panel-card__icon,
+.novarush-theme .select-icon,
+.novarush-theme .tournament-footer__eyebrow,
+.novarush-theme .tournament-footer__formula-title,
+.novarush-theme .tournament-footer__formula strong {
+  color: var(--color-accent-title);
+}
+
+.novarush-theme .tournament-footer {
+  background: var(--bg);
+}
+
+.novarush-theme .tournament-footer__card-glow {
+  background: var(--accent-soft);
+}
+
+.novarush-theme .tournament-footer__line,
+.novarush-theme .hero-header__accent-line,
+.novarush-theme .tournament-footer__brand-line {
+  background: var(--color-accent-title);
+  box-shadow: var(--shadow-accent);
+}
+
+.novarush-theme .hero-header__title-main-svg text {
+  font-family: var(--font-display);
+  font-size: 11rem;
+  text-transform: uppercase;
+}
+
+.novarush-theme .section-card,
+.novarush-theme .login-card,
+.novarush-theme .table-shell,
+.novarush-theme .history-card,
+.novarush-theme .tournament-footer__rules-card {
+  backdrop-filter: none;
+}
+
+.novarush-theme .custom-select option {
+  color: var(--text);
+  background: var(--bg);
+}
+
+@media (min-width: 425px) and (max-width: 768px) {
+
+  .novarush-theme .hero-header__nav-logo img,
+.novarush-theme .hero-header__logo-image,
+.novarush-theme .hero-header__showcase img {
+  mix-blend-mode: screen;
+    width: min(100%, 21rem) !important ;
+
+}
+ 
+}
+
+@media (max-width: 425px) {
+
+  
+.novarush-theme .hero-header__nav-logo img,
+.novarush-theme .hero-header__logo-image,
+.novarush-theme .hero-header__showcase img {
+  mix-blend-mode: screen;
+    width: min(100%, 16rem) !important ;
+
+}
+
+  .novarush-theme .app-container {
+    padding: 0.65rem 0.42rem 0.9rem;
+  }
+
+  .novarush-theme .main-grid {
+    gap: 0.65rem;
+  }
+
+  .novarush-theme .panel-card {
+    padding: 0.45rem 0.25rem;
+    border-radius: 0;
+  }
+
+  .novarush-theme .panel-controls {
+    gap: 0.68rem;
+  }
+
+  .novarush-theme .field-label {
+    margin-bottom: 0.28rem;
+    font-size: 8px;
+    letter-spacing: 0.1em;
+  }
+
+  .novarush-theme .custom-select,
+  .novarush-theme .number-field {
+    min-height: 2.45rem;
+    padding: 0.58rem 0.68rem;
+    border-radius: 0.7rem;
+    font-size: 0.8rem;
+  }
+
+  .novarush-theme .custom-select {
+    padding-right: 1.9rem;
+  }
+
+  .novarush-theme .select-icon {
+    right: 0.58rem;
+  }
+
+  .novarush-theme .select-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .novarush-theme .slot-name-editor {
+    gap: 0.35rem;
+    margin-top: 0.58rem;
+  }
+
+  .novarush-theme .slot-name-editor__row {
+    grid-template-columns: minmax(0, 1fr) 2.45rem;
+    gap: 0.38rem;
+  }
+
+  .novarush-theme .slot-name-editor__button {
+    min-width: 2.45rem;
+    min-height: 2.45rem;
+    border-radius: 0.7rem;
+  }
+
+  .novarush-theme .day-grid {
+    gap: 0.25rem;
+  }
+
+  .novarush-theme .day-chip {
+    min-height: 2.25rem;
+    padding: 0.46rem 0.1rem;
+    border-radius: 0.62rem;
+    font-size: 0.67rem;
+  }
+
+  .novarush-theme .section-card {
+    padding: 0.65rem;
+    border-radius: 0.85rem;
+  }
+
+  .novarush-theme .section-card__header {
+    gap: 0.45rem;
+    margin-bottom: 0.62rem;
+  }
+
+  .novarush-theme .section-card__icon,
+  .novarush-theme .panel-card__icon {
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 0.65rem;
+  }
+
+  .novarush-theme .section-card__icon svg,
+  .novarush-theme .panel-card__icon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .novarush-theme .section-card__eyebrow {
+    font-size: 8px;
+    letter-spacing: 0.12em;
+  }
+
+  .novarush-theme .section-card__title {
+    margin-top: 0.12rem;
+    font-size: 0.86rem;
+  }
+
+  .novarush-theme .form-grid {
+    gap: 0.52rem;
+  }
+
+  .novarush-theme .action-button {
+    min-height: 2.45rem;
+    margin-top: 0.58rem;
+    padding: 0.6rem 0.58rem;
+    border-radius: 0.68rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.05em;
+    gap: 0.32rem;
+  }
+
+  .novarush-theme .action-button svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .novarush-theme .history-card {
+    margin-top: 0.65rem;
+    padding: 0.5rem;
+    border-radius: 0.82rem;
+  }
+
+  .novarush-theme .history-card__top {
+    margin-bottom: 0.55rem;
+  }
+
+  .novarush-theme .history-card__slot,
+  .novarush-theme .history-card__day {
+    font-size: 0.56rem;
+    letter-spacing: 0.07em;
+  }
+
+  .novarush-theme .history-card__list {
+    gap: 0.42rem;
+  }
+
+  .novarush-theme .history-card__empty {
+    padding: 1rem 0.7rem;
+    border-radius: 0.7rem;
+    font-size: 0.78rem;
+  }
+
+  .novarush-theme .history-item:not(.history-item--editing) {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "badges actions"
+      "points actions";
+    column-gap: 0.42rem;
+    row-gap: 0.32rem;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 0.72rem;
+  }
+
+  .novarush-theme .history-item:not(.history-item--editing) .history-item__badges {
+    grid-area: badges;
+    gap: 0.22rem;
+  }
+
+  .novarush-theme .history-item:not(.history-item--editing) .history-item__footer {
+    display: contents;
+  }
+
+  .novarush-theme .history-item:not(.history-item--editing) .history-item__points {
+    grid-area: points;
+    font-size: 0.78rem;
+    line-height: 1.1;
+  }
+
+  .novarush-theme .history-item:not(.history-item--editing) .history-item__actions {
+    grid-area: actions;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.28rem;
+    justify-content: stretch;
+    align-self: stretch;
+    min-width: 4.9rem;
+  }
+
+  .novarush-theme .history-item .action-button--small {
+    width: 100%;
+    min-height: 1.85rem;
+    margin-top: 0;
+    padding: 0.38rem 0.44rem;
+    border-radius: 0.55rem;
+    font-size: 0.53rem;
+    letter-spacing: 0.035em;
+    gap: 0.22rem;
+  }
+
+  .novarush-theme .history-item .action-button--small svg {
+    width: 11px;
+    height: 11px;
+  }
+
+  .novarush-theme .history-item .top-badge {
+    min-height: 1.25rem;
+    padding: 0.18rem 0.32rem;
+    border-radius: 0.45rem;
+    font-size: 0.48rem;
+    letter-spacing: 0.04em;
+  }
+
+  .novarush-theme .history-item--editing {
+    padding: 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .novarush-theme .history-item--editing .history-item__actions {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.28rem;
+  }
+
+  .novarush-theme .panel-card__header {
+    gap: 0.55rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .novarush-theme .panel-card__title-wrap {
+    gap: 0.42rem;
+  }
+
+  .novarush-theme .panel-card__title {
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+  }
+
+  .novarush-theme .table-shell {
+    border-radius: 0.75rem;
+  }
+
+  .novarush-theme .table-scroll {
+    overflow-x: hidden;
+  }
+
+  .novarush-theme .ranking-table {
+    width: 100%;
+    min-width: 0;
+    table-layout: fixed;
+    font-size: 0.68rem;
+  }
+
+  .novarush-theme .ranking-table th,
+  .novarush-theme .ranking-table td {
+    padding: 0.48rem 0.24rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .novarush-theme .ranking-table th {
+    font-size: 7px;
+    letter-spacing: 0.045em;
+  }
+
+  .novarush-theme .ranking-table th:nth-child(1),
+  .novarush-theme .ranking-table td:nth-child(1) {
+    width: 12%;
+  }
+
+  .novarush-theme .ranking-table th:nth-child(2),
+  .novarush-theme .ranking-table td:nth-child(2) {
+    width: 36%;
+  }
+
+  .novarush-theme .ranking-table th:nth-child(3),
+  .novarush-theme .ranking-table td:nth-child(3),
+  .novarush-theme .ranking-table th:nth-child(4),
+  .novarush-theme .ranking-table td:nth-child(4),
+  .novarush-theme .ranking-table th:nth-child(5),
+  .novarush-theme .ranking-table td:nth-child(5) {
+    width: 17.33%;
+    text-align: center;
+  }
+
+  .novarush-theme .rank-chip {
+    width: 1.45rem;
+    height: 1.45rem;
+    border-radius: 0.52rem;
+    font-size: 0.66rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .novarush-theme .ranking-table--with-kills th:nth-child(1),
+  .novarush-theme .ranking-table--with-kills td:nth-child(1) { width: 10%; }
+  .novarush-theme .ranking-table--with-kills th:nth-child(2),
+  .novarush-theme .ranking-table--with-kills td:nth-child(2) { width: 30%; }
+  .novarush-theme .ranking-table--with-kills th:nth-child(3),
+  .novarush-theme .ranking-table--with-kills td:nth-child(3),
+  .novarush-theme .ranking-table--with-kills th:nth-child(5),
+  .novarush-theme .ranking-table--with-kills td:nth-child(5) { width: 14%; }
+  .novarush-theme .ranking-table--with-kills th:nth-child(4),
+  .novarush-theme .ranking-table--with-kills td:nth-child(4),
+  .novarush-theme .ranking-table--with-kills th:nth-child(6),
+  .novarush-theme .ranking-table--with-kills td:nth-child(6) { width: 16%; }
+}
