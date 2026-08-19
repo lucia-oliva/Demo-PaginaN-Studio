@@ -1,0 +1,15 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "demo-paginan-studio",
+	"pages_build_output_dir": "./dist",
+	"compatibility_date": "2026-08-18",
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "demo-paginan-studio-db",
+			"database_id": "41063a31-da63-46ee-b9e0-6c53bcccf0bb",
+            "preview_database_id": "DB"
+
+		}
+	]
+}

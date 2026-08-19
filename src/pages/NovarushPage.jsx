@@ -19,6 +19,7 @@ import {
   deleteNovaRushEntryById,
   deleteAllNovaRushEntries,
 } from '../services/api';
+import { useAuth } from '../auth/AuthContext';
 
 const novarushContent = {
   themeVars: {
@@ -83,6 +84,7 @@ export default function NovarushPage() {
   const [manualPenaltyInput, setManualPenaltyInput] = useState(2);
   const [alert, setAlert] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     if (!alert) return;
@@ -394,7 +396,14 @@ export default function NovarushPage() {
       <main className="app-container">
         <Header content={novarushContent.header} />
 
-        <section className="main-grid">
+        <section 
+          className={
+            isAuthenticated
+              ? 'main-grid'
+              : 'main-grid main-grid--public'
+          }
+          >
+            {isAuthenticated ? (
           <ControlPanel
             slots={slots}
             days={DAYS}
@@ -424,7 +433,7 @@ export default function NovarushPage() {
             resetDialogTitle="Reiniciar tabla Nova Rush"
             resetDialogDescription="Se eliminaran todos los puntos y sanciones cargados en Nova Rush. Los slots quedan intactos."
             loading={loading}
-          />
+          /> ) : null}
 
           <RankingTable
             ranking={ranking}
