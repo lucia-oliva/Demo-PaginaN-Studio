@@ -19,6 +19,7 @@ import {
   deleteEntryById,
   deleteAllEntries,
 } from '../services/api';
+import { useAuth } from '../auth/AuthContext';
 
 function normalizeEntry(entry) {
   const populatedSlot = entry?.slotId && typeof entry.slotId === 'object' ? entry.slotId : null;
@@ -47,6 +48,7 @@ export default function OneVOnePage() {
   const [manualPenaltyInput, setManualPenaltyInput] = useState(2);
   const [alert, setAlert] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     if (!alert) return;
@@ -354,7 +356,14 @@ export default function OneVOnePage() {
       <main className="app-container">
         <Header />
 
-        <section className="main-grid">
+        <section 
+          className={
+              isAuthenticated
+                ? 'main-grid'
+                : 'main-grid main-grid--public'
+          }
+          >
+            {isAuthenticated ? (
           <ControlPanel
             slots={slots}
             days={DAYS}
@@ -384,7 +393,7 @@ export default function OneVOnePage() {
             resetDialogTitle="Reiniciar tabla 1v1"
             resetDialogDescription="Se eliminaran todos los puntos y sanciones cargados en 1v1. Los slots quedan intactos."
             loading={loading}
-          />
+          /> ) : null}
 
           <RankingTable
             ranking={ranking}

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import AuthButton from './AuthButton';
 
 const defaultHeaderContent = {
   navLogoSrc: '/assets/logo_sin_fondo.svg',
@@ -37,6 +38,7 @@ export default function Header({ content = defaultHeaderContent }) {
           <Link to="/eclipse">ECLIPSE</Link>
           <Link to="/novarush">NOVA RUSH</Link>
         </div>
+        <AuthButton />
       </nav>
 
       <div className="hero-header__content">

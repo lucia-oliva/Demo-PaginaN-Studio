@@ -1,86 +1,224 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { LockKeyhole } from 'lucide-react';
-import Header from '../components/Header';
-import { loginAdmin } from '../services/api';
+import {
+  useEffect,
+  useState,
+} from 'react';
+
+import {
+  Link,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
+
+import {
+  ArrowLeft,
+  LockKeyhole,
+} from 'lucide-react';
+
+import { useAuth } from '../auth/AuthContext';
+
+function getSafeReturnPath(routeState) {
+  const candidate = routeState?.from;
+
+  if (
+    typeof candidate === 'string'
+    && candidate.startsWith('/')
+    && !candidate.startsWith('//')
+    && candidate !== '/login'
+  ) {
+    return candidate;
+  }
+
+  return '/';
+}
 
 export default function LoginPage() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+  const location = useLocation();
+
+  const {
+    isAuthenticated,
+    checkingSession,
+    login,
+  } = useAuth();
+
+  const returnPath = getSafeReturnPath(
+    location.state,
+  );
+
+  const [username, setUsername] =
+    useState('');
+
+  const [password, setPassword] =
+    useState('');
+
+  const [error, setError] =
+    useState('');
+
+  const [loading, setLoading] =
+    useState(false);
+
+  useEffect(() => {
+    if (
+      !checkingSession
+      && isAuthenticated
+    ) {
+      navigate(returnPath, {
+        replace: true,
+      });
+    }
+  }, [
+    checkingSession,
+    isAuthenticated,
+    navigate,
+    returnPath,
+  ]);
 
   async function handleSubmit(event) {
     event.preventDefault();
+
     setError('');
     setLoading(true);
 
     try {
-      await loginAdmin({ email, password });
-      navigate('/');
-    } catch (err) {
-      setError(err.message || 'No se pudo iniciar sesión');
+      await login({
+        username,
+        password,
+      });
+
+      navigate(returnPath, {
+        replace: true,
+      });
+    } catch (loginError) {
+      setError(
+        loginError.message
+        || 'No se pudo iniciar sesión',
+      );
     } finally {
       setLoading(false);
     }
   }
 
+  if (checkingSession) {
+    return (
+      <div className="login-page">
+        <p className="login-page__checking">
+          Verificando sesión…
+        </p>
+      </div>
+    );
+  }
+
   return (
-    <div className="app-shell">
-      <div className="app-shell__glow" />
+    <div className="login-page">
+      <main className="login-page__container">
+        <Link
+          className="login-page__main-logo"
+          to="/"
+          aria-label="Volver a 1V1"
+        >
+          <img
+            src="/assets/logo_sin_fondo.svg"
+            alt="NOVA Esports"
+          />
+        </Link>
 
-      <main className="app-container">
-        <Header />
+        <form
+          className="login-page__card"
+          onSubmit={handleSubmit}
+        >
+          <img
+            className="login-page__secondary-logo"
+            src="/assets/logo_nova_blanco1.svg"
+            alt="NOVA"
+          />
 
-        <section className="login-shell">
-          <form className="login-card" onSubmit={handleSubmit}>
-            <div className="login-card__icon" aria-hidden="true">
-              <LockKeyhole size={24} />
-            </div>
+          <div
+            className="login-page__icon"
+            aria-hidden="true"
+          >
+            <LockKeyhole size={24} />
+          </div>
 
-            <div>
-              <p className="login-card__eyebrow">Admin</p>
-              <h2 className="login-card__title">Iniciar sesión</h2>
-            </div>
+          <div className="login-page__heading">
+            <p className="login-page__eyebrow">
+              Acceso administrativo
+            </p>
 
-            <label className="login-field">
-              <span className="field-label">Email</span>
-              <input
-                className="number-field"
-                type="email"
-                autoComplete="email"
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-                disabled={loading}
-                required
-              />
-            </label>
+            <h1 className="login-page__title">
+              Iniciar sesión
+            </h1>
 
-            <label className="login-field">
-              <span className="field-label">Contraseña</span>
-              <input
-                className="number-field"
-                type="password"
-                autoComplete="current-password"
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-                disabled={loading}
-                required
-              />
-            </label>
+            <p className="login-page__description">
+              Ingresá para administrar puntos,
+              sanciones y slots.
+            </p>
+          </div>
 
-            {error ? <p className="login-card__error">{error}</p> : null}
+          <label className="login-page__field">
+            <span>Usuario</span>
 
-            <button className="action-button action-button--danger" type="submit" disabled={loading}>
-              {loading ? 'Ingresando...' : 'Entrar'}
-            </button>
+            <input
+              type="text"
+              name="username"
+              autoComplete="username"
+              value={username}
+              onChange={(event) => {
+                setUsername(event.target.value);
+              }}
+              disabled={loading}
+              maxLength={100}
+              required
+              autoFocus
+            />
+          </label>
 
-            <Link className="login-card__link" to="/">
-              Volver a la tabla
-            </Link>
-          </form>
-        </section>
+          <label className="login-page__field">
+            <span>Contraseña</span>
+
+            <input
+              type="password"
+              name="password"
+              autoComplete="current-password"
+              value={password}
+              onChange={(event) => {
+                setPassword(event.target.value);
+              }}
+              disabled={loading}
+              maxLength={256}
+              required
+            />
+          </label>
+
+          {error ? (
+            <p
+              className="login-page__error"
+              role="alert"
+            >
+              {error}
+            </p>
+          ) : null}
+
+          <button
+            className="login-page__submit"
+            type="submit"
+            disabled={loading}
+          >
+            {loading
+              ? 'Ingresando…'
+              : 'Ingresar'}
+          </button>
+
+          <Link
+            className="login-page__back"
+            to={returnPath}
+          >
+            <ArrowLeft
+              size={16}
+              aria-hidden="true"
+            />
+            Volver a la tabla
+          </Link>
+        </form>
       </main>
     </div>
   );

@@ -19,6 +19,7 @@ import {
   deleteNovaEclipseEntryById,
   deleteAllNovaEclipseEntries,
 } from '../services/api';
+import { useAuth } from '../auth/AuthContext';
 
 const novaeclipseContent = {
   themeVars: {
@@ -83,7 +84,7 @@ export default function NovaEclipsePage() {
   const [manualPenaltyInput, setManualPenaltyInput] = useState(2);
   const [alert, setAlert] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const { isAuthenticated } = useAuth();
   useEffect(() => {
     if (!alert) return;
     const timer = setTimeout(() => setAlert(null), 2400);
@@ -394,7 +395,14 @@ export default function NovaEclipsePage() {
       <main className="app-container">
         <Header content={novaeclipseContent.header} />
 
-        <section className="main-grid">
+        <section 
+          className={
+            isAuthenticated
+              ? 'main-grid'
+              : 'main-grid main-grid--public'
+          }
+          >
+            {isAuthenticated ? (
           <ControlPanel
             slots={slots}
             days={DAYS}
@@ -424,7 +432,7 @@ export default function NovaEclipsePage() {
             resetDialogTitle="Reiniciar tabla Nova Eclipse"
             resetDialogDescription="Se eliminaran todos los puntos y sanciones cargados en Nova Eclipse. Los slots quedan intactos."
             loading={loading}
-          />
+          /> ) : null}
 
           <RankingTable
             ranking={ranking}

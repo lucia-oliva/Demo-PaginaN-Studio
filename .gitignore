@@ -38,3 +38,9 @@ Thumbs.db
 
 # misc
 *.local
+
+# Cloudflare local
+.wrangler/
+.dev.vars
+.dev.vars.*
+!.dev.vars.example

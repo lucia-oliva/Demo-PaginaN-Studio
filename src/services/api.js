@@ -1,19 +1,46 @@
-const API_URL = import.meta.env.VITE_API_URL || 'https://torneo-1v1-app.vercel.app/api';
+const API_URL = (
+  import.meta.env.VITE_API_URL || '/api'
+).replace(/\/$/, '');
+
+const SAFE_METHODS = new Set([
+  'GET',
+  'HEAD',
+  'OPTIONS',
+]);
+
+let csrfToken = null;
 
 async function request(path, options = {}) {
+  const {
+    headers: customHeaders = {},
+    ...fetchOptions
+  } = options;
+
+  const method = String(
+    fetchOptions.method || 'GET',
+  ).toUpperCase();
+
   const response = await fetch(`${API_URL}${path}`, {
-    credentials: options.credentials || 'same-origin',
+    credentials: 'include',
+    ...fetchOptions,
+    method,
     headers: {
       'Content-Type': 'application/json',
-      ...(options.headers || {}),
+      ...(
+        csrfToken && !SAFE_METHODS.has(method)
+          ? { 'X-CSRF-Token': csrfToken }
+          : {}
+      ),
+      ...customHeaders,
     },
-    ...options,
   });
 
   const data = await response.json().catch(() => ({}));
 
   if (!response.ok || data.ok === false) {
-    throw new Error(data.message || 'Error en la petición');
+    throw new Error(
+      data.message || 'Error en la petición',
+    );
   }
 
   return data;
@@ -199,27 +226,36 @@ export async function deleteAllNovaEclipseEntries() {
 export async function loginAdmin(payload) {
   const res = await request('/auth/login', {
     method: 'POST',
-    credentials: 'include',
     body: JSON.stringify(payload),
   });
+
+  csrfToken = res.csrfToken || null;
 
   return res.user;
 }
 
 export async function logoutAdmin() {
-  await request('/auth/logout', {
-    method: 'POST',
-    credentials: 'include',
-  });
+  try {
+    await request('/auth/logout', {
+      method: 'POST',
+    });
+  } finally {
+    csrfToken = null;
+  }
 }
 
 export async function getCurrentUser() {
   try {
-    const res = await request('/auth/me', {
-      credentials: 'include',
-    });
+    const res = await request('/auth/me');
+
+    csrfToken = res.csrfToken || null;
+
     return res.user;
   } catch {
+    csrfToken = null;
     return null;
   }
 }
+
+
+
